@@ -1,23 +1,27 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :request do
-  describe 'Success POST #signin' do
-    it 'returns http success' do
-      user = create(:user)
-      post '/signin', params: { email: user.email, password: user.password }
-      expect(response).to have_http_status(:ok)
+  describe 'POST #signin' do
+    let(:user) { create(:user) }
+
+    context 'when the payload is valid' do
+      before { post signin_path, params: { email: user.email, password: user.password } }
+
+      it 'should return ok' do
+        expect(response).to have_http_status(:ok)
+      end
+
+      it 'return access token' do
+        expect(response.body).to include('access_token')
+      end
     end
 
-    it 'return access token' do
-      user = create(:user)
-      post '/signin', params: { email: user.email, password: user.password }
-      expect(response.body).to include('access_token')
-    end
+    context 'when the payload is invalid' do
+      before { post signin_path, params: { email: user.email, password: '123456789' } }
 
-    it 'return invalid credentials' do
-      user = create(:user)
-      post '/signin', params: { email: user.email, password: '123456789' }
-      expect(response).to have_http_status(:unauthorized)
+      it 'return invalid credentials' do
+        expect(response).to have_http_status(:unauthorized)
+      end
     end
   end
 end
