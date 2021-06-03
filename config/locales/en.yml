@@ -30,4 +30,6 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  api:
+    unauthorized: 'Unauthorized request'
+    invalid_credentials: 'Invalid email or password'
