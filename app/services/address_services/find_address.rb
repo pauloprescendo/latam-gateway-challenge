@@ -7,7 +7,7 @@ module AddressServices
     end
 
     def call
-      address = Address.find_by(zip: zip)
+      address = Address.find_by(zip: zip.gsub(/\D/, ''))
       if address
         { success?: true, payload: address }
       else

@@ -4,7 +4,7 @@ class AddressesController < ApplicationController
 
     if address.key?(:error)
       address = ViacepServices::FindAddress.new(params).call
-      address = AddressServices::CreateAddress.new(address[:payload]).call if address[:success?]
+      CreateAddressWorker.perform_async(address[:payload]) if address[:success?]
     end
 
     if address[:success?]
