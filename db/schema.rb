@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_03_154510) do
+ActiveRecord::Schema.define(version: 2021_06_03_224504) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "zip", null: false
+    t.string "street", null: false
+    t.string "state"
+    t.string "city"
+    t.string "neighborhood"
+    t.string "complement"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["zip"], name: "index_addresses_on_zip", unique: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"

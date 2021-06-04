@@ -31,5 +31,8 @@
 
 en:
   api:
-    unauthorized: 'Unauthorized request'
-    invalid_credentials: 'Invalid email or password'
+    signin:
+      unauthorized: 'Unauthorized request'
+      invalid_credentials: 'Invalid email or password'
+    find_address:
+      not_found: 'Address not found'
