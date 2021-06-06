@@ -12,6 +12,8 @@ services:
       - db
       - redis
     env_file: .env.development
+    tty: true
+    stdin_open: true
 
   db:
     image: postgres:12.1
