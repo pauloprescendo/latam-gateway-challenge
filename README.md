@@ -1,24 +1,30 @@
-# README
+# Teste LatamGateway
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Api Rest para consulta de endereços informando o CEP.
+***
 
-Things you may want to cover:
+## Pré-requisitos
 
-* Ruby version
+* Docker
+* Docker Compose
 
-* System dependencies
+***
 
-* Configuration
+## Instalação
 
-* Database creation
+```bash
+git clone https://github.com/pauloprescendo/latam-gateway-challenge.git
+cd latam-gateway-challenge
+docker-compose build
+docker-compose run --rm web bin/setup
+docker-compose up
+```
 
-* Database initialization
+A applicação rodará em http://localhost:3000/
+***
 
-* How to run the test suite
+## Testes
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```bash
+docker-compose run -e "RAILS_ENV=test" --rm web rspec
+```
