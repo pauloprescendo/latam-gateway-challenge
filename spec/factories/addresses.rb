@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :address do
-    zip { "MyString" }
-    street { "MyString" }
-    state { "MyString" }
-    city { "MyString" }
+    zip { Faker::Address.zip }
+    street { Faker::Address.street_name }
+    state { Faker::Address.state }
+    city { Faker::Address.city }
   end
 end

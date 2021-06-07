@@ -1,14 +1,14 @@
 module AddressServices
   class UpdateAddressUser
-    attr_accessor :address, :user
+    attr_accessor :address, :user_id
 
-    def initialize(address, user)
+    def initialize(address, user_id)
       @address = address
-      @user = user
+      @user_id = user_id
     end
 
     def call
-      @address.users << user
+      address.user_ids << user_id
       if address.save
         { success?: true, payload: address }
       else
