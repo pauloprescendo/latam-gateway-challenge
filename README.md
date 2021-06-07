@@ -32,6 +32,9 @@ docker-compose up
 Com os serviços `postgresql` e `redis` rodando faça:
 ```bash
 bundle install
+rails db:setup db:migrate db:seed
+bundle exec sidekiq
+rails s
 ```
 
 A applicação rodará em http://localhost:3000/
